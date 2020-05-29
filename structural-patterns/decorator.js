@@ -73,3 +73,26 @@ pegasus.run(); // I'm pegasus Jane and I'm so fast! I have white and beautiful w
 
 const alicorn = new Alicorn(new Horse('alicorn Jane'), '2m')
 alicorn.run(); // I'm alicorn Jane and I'm so fast! I have white and beautiful wings and my horn is 2m long
+
+/*--------------------------------------*/
+
+function Horse(name) {
+  this.name = name;
+  this.run = () => console.log(`I'm ${this.name} and I'm so fast!`);
+}
+
+function Unicorn(horse, horn) {
+  this.horse = horse;
+  this.horn = horn;
+  this.run = () => {
+    this.horse.run();
+    this._showHorn();
+  }
+  this._showHorn = () => console.log(`My horn is ${this.horn} long`)
+}
+
+const horse = new Horse('horse Jane');
+horse.run(); // I'm horse Jane and I'm so fast!
+
+const unicorn = new Unicorn(new Horse('unicorn Jane'), '1.5m');
+unicorn.run(); // I'm unicorn Jane and I'm so fast! My horn is 1.5m long
